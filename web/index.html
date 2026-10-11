@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RepoPilot</title>
+    <script>
+      (function () {
+        var stored = null
+        try { stored = localStorage.getItem('repopilot-theme') } catch (error) {}
+        var theme = stored === 'day' || stored === 'night'
+          ? stored
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day')
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
